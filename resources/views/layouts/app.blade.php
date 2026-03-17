@@ -29,7 +29,11 @@
     </style>
     @stack('styles')
 </head>
-<body class="min-h-screen flex flex-col bg-slate-50 text-slate-800 font-sans antialiased">
+<body id="top" class="min-h-screen flex flex-col bg-slate-50 text-slate-800 font-sans antialiased">
+    {{-- Back to top: fixed to viewport so always visible --}}
+    <a href="#top" class="fixed bottom-6 right-6 z-[100] flex items-center justify-center w-12 h-12 rounded-lg bg-teal-600 text-white shadow-lg hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 transition-colors" style="position: fixed;" aria-label="Back to top">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+    </a>
     {{-- Top bar: Ambulance booking --}}
     <div class="bg-teal-700 text-white text-center py-2 px-4 text-sm">
         <span>To book our ambulance, contact the Tenwek Hospital Coverage team on</span>

@@ -63,7 +63,18 @@
         {{-- Location map --}}
         <div class="mt-12 not-prose">
             <h2 class="text-lg font-semibold text-slate-900 mb-3">Location map</h2>
-            <div class="h-72 bg-slate-200 rounded-xl flex items-center justify-center text-slate-500 border border-slate-200">Map placeholder — Tenwek Hospital, Bomet County, Kenya</div>
+            <div class="rounded-xl overflow-hidden border border-slate-200 aspect-video max-w-4xl">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.481863334971!2d35.3593559!3d-0.7440959!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182b9870e4aff63b%3A0xf9e99fc3ee98b42e!2sAGC%20Tenwek%20Hospital!5e0!3m2!1sen!2ske!4v1773738967393!5m2!1sen!2ske"
+                    width="100%"
+                    height="450"
+                    style="border:0; width:100%; height:100%;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="AGC Tenwek Hospital on Google Maps"
+                ></iframe>
+            </div>
         </div>
     </x-page>
 @endsection

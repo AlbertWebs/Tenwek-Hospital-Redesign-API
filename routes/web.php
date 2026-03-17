@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CareersController;
 use Illuminate\Support\Facades\Route;
 
 // Home
@@ -87,8 +88,8 @@ Route::get('/community', fn () => view('community.index'))->name('community.inde
 // News
 Route::get('/news', fn () => view('news.index'))->name('news.index');
 
-// Careers
-Route::get('/careers', fn () => view('careers.index'))->name('careers.index');
+// Careers (lists job opportunities from database)
+Route::get('/careers', [CareersController::class, 'index'])->name('careers.index');
 
 // Contact
 Route::get('/contact', fn () => view('contact.index'))->name('contact.index');
@@ -98,7 +99,10 @@ Route::get('/contact/visiting-hours', fn () => view('contact.visiting'))->name('
 Route::get('/book-appointment', fn () => view('section', ['title' => 'Book Appointment', 'breadcrumbs' => ['Book Appointment' => null], 'content' => '<p>Schedule an appointment with our panel of doctors. Content placeholder.</p>']))->name('book-appointment');
 Route::get('/tenders', fn () => view('section', ['title' => 'Tenders', 'breadcrumbs' => ['Tenders' => null], 'content' => '<p>Current procurement and tenders. Content placeholder.</p>']))->name('tenders');
 Route::get('/volunteers', fn () => view('section', ['title' => 'Volunteers', 'breadcrumbs' => ['Volunteers' => null], 'content' => '<p>Volunteer with Tenwek Hospital. Content placeholder.</p>']))->name('volunteers');
+Route::get('/patient-guide', fn () => view('section', ['title' => 'Patient Guide', 'breadcrumbs' => ['Patient Guide' => null], 'content' => '<p>Information for patients. Content placeholder.</p>']))->name('patient-guide');
 
 // Research (from live header audit)
 Route::get('/research', fn () => view('section', ['title' => 'Research', 'breadcrumbs' => ['Research' => null], 'content' => '<p>Research at Tenwek Hospital. Content placeholder.</p>']))->name('research.index');
 Route::get('/research/ethics', fn () => view('section', ['title' => 'Institutional Ethics Review Committee', 'breadcrumbs' => ['Research' => route('research.index'), 'Ethics Committee' => null], 'content' => '<p>Institutional Ethics Review Committee. Content placeholder.</p>']))->name('research.ethics');
+
+require __DIR__ . '/admin.php';

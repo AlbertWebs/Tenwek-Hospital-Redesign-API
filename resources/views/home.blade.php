@@ -44,7 +44,7 @@
                 <h1 class="hero-title text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-white">Tenwek Hospital</h1>
                 <p class="hero-title mt-3 text-lg sm:text-xl text-white/95">(A Ministry of Africa Gospel Church)</p>
                 <p class="hero-title mt-4 text-xl sm:text-2xl text-white/90">We Treat ~ Jesus Heals</p>
-                <a href="{{ route('about.tenwek') }}" class="mt-8 inline-flex items-center px-8 py-3.5 text-base font-medium text-white rounded-full border-2 border-amber-400 bg-black/40 hover:bg-black/60 transition-colors">
+                <a href="{{ route('about.tenwek') }}" class="mt-8 inline-flex items-center px-8 py-3.5 text-base font-medium text-white rounded-lg border-2 border-amber-400 bg-black/40 hover:bg-black/60 transition-colors">
                     Learn more
                 </a>
                 <a href="tel:+254700499699" class="mt-4 inline-flex items-center text-sm text-white/90 hover:text-white">Talk to our customer service team 0700 499 699</a>
