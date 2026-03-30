@@ -1,3 +1,5 @@
+/* Clinical Sanctuary Design System – Tenwek Hospital */
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 @import 'tailwindcss';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
@@ -5,10 +7,184 @@
 @source '../**/*.blade.php';
 @source '../**/*.js';
 
-/* Class-based dark mode: add .dark to html to enable */
+/* Class-based dark mode */
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    /* Fonts */
+    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-headline: 'Lexend', ui-sans-serif, system-ui, sans-serif;
+
+    /* Clinical Sanctuary Palette */
+    --color-primary:           #100f57;
+    --color-secondary:         #156874;
+    --color-gold:              #e4c373;
+    --color-surface:           #fbf9f8;
+    --color-surface-lo:        #f6f3f2;
+    --color-surface-hi:        #eae8e7;
+    --color-surface-highest:   #e4e2e1;
+    --color-on-surface:        #1b1c1c;
+    --color-on-surface-muted:  #464650;
+    --color-outline-variant:   #c7c5d2;
+}
+
+/* ============================================================
+   PREMIUM COMPONENT LAYER
+   ============================================================ */
+
+/* Glass panels */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+}
+.glass-dark {
+    background: rgba(16, 15, 87, 0.72);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.glass-float {
+    background: rgba(255, 255, 255, 0.90);
+    backdrop-filter: blur(24px) saturate(200%);
+    -webkit-backdrop-filter: blur(24px) saturate(200%);
+    box-shadow:
+        0 4px 6px -1px rgba(16, 15, 87, 0.04),
+        0 20px 50px -8px rgba(16, 15, 87, 0.14),
+        0 0 0 1px rgba(255,255,255,0.6) inset;
+}
+
+/* Ambient / diffused premium shadows */
+.shadow-ambient-primary {
+    box-shadow: 0 40px 80px -20px rgba(16, 15, 87, 0.28), 0 8px 20px -6px rgba(16, 15, 87, 0.12);
+}
+.shadow-ambient-gold {
+    box-shadow: 0 20px 50px -10px rgba(228, 195, 115, 0.35), 0 4px 12px -4px rgba(228, 195, 115, 0.2);
+}
+.shadow-ambient-teal {
+    box-shadow: 0 20px 50px -10px rgba(21, 104, 116, 0.22), 0 4px 12px -4px rgba(21, 104, 116, 0.12);
+}
+
+/* Bento image cards */
+.bento-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+}
+.bento-card img {
+    transition: transform 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.bento-card:hover img {
+    transform: scale(1.06);
+}
+
+/* Premium text rendering */
+.font-headline {
+    font-family: 'Lexend', ui-sans-serif, system-ui, sans-serif;
+    font-feature-settings: "kern" 1, "liga" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Keyframes */
+@keyframes hero-bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(8px); }
+}
+@keyframes float-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@keyframes gold-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(228, 195, 115, 0.4); }
+    50%       { box-shadow: 0 0 0 8px rgba(228, 195, 115, 0); }
+}
+
+.animate-hero-bounce { animation: hero-bounce 2.2s ease-in-out infinite; }
+.animate-float-up    { animation: float-up 0.8s ease-out forwards; }
+.animate-fade-in     { animation: fade-in 0.6s ease-out forwards; }
+.animate-gold-pulse  { animation: gold-pulse 2s ease-in-out infinite; }
+
+/* Gold accent divider */
+.gold-bar {
+    width: 3rem;
+    height: 3px;
+    background: linear-gradient(90deg, #e4c373, #f0d68a);
+    border-radius: 2px;
+}
+
+/* Section eyebrow label */
+.eyebrow {
+    font-family: 'Lexend', ui-sans-serif, system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #156874;
+}
+
+/* Premium scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f6f3f2; }
+::-webkit-scrollbar-thumb { background: #c7c5d2; border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: #100f57; }
+
+/* Selection colour */
+::selection {
+    background: rgba(21, 104, 116, 0.18);
+    color: #100f57;
+}
+
+/* Smooth hover transitions for CTAs */
+.cta-gold {
+    background: linear-gradient(135deg, #e4c373 0%, #f0d68a 50%, #e4c373 100%);
+    background-size: 200% auto;
+    transition: background-position 0.5s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    color: #100f57;
+}
+.cta-gold:hover {
+    background-position: right center;
+    transform: scale(1.03);
+    box-shadow: 0 20px 40px -8px rgba(228,195,115,0.4);
+}
+
+/* Stat number gradient text */
+.stat-number {
+    background: linear-gradient(135deg, #156874, #1a8a99);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* News card hover lift */
+.news-card {
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.news-card:hover {
+    transform: translateY(-6px);
+}
+
+/* Quick action card */
+.qa-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow:
+        0 2px 4px rgba(16,15,87,0.04),
+        0 12px 32px rgba(16,15,87,0.08),
+        0 0 0 1px rgba(255,255,255,0.8) inset;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.qa-card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+        0 4px 8px rgba(16,15,87,0.06),
+        0 24px 48px rgba(16,15,87,0.14),
+        0 0 0 1px rgba(255,255,255,0.8) inset;
 }
