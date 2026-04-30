@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             PostSeeder::class,
             CtcSeeder::class,
             CareerSeeder::class,
+            OutstationSeeder::class,
             MediaSeeder::class,
         ]);
     }

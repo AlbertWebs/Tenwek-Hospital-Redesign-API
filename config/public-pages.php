@@ -21,6 +21,7 @@ return [
         ['title' => 'Leadership', 'path' => 'about/leadership', 'route' => 'about.leadership', 'group' => 'About', 'type' => 'managed'],
         ['title' => 'Mission, Vision & Values', 'path' => 'about/mission-vision-values', 'route' => 'about.mission', 'group' => 'About', 'type' => 'managed'],
         ['title' => 'News & Updates', 'path' => 'news', 'route' => 'news.index', 'group' => 'News', 'type' => 'listing', 'listing_type' => 'news', 'admin_route' => 'admin.posts.index', 'admin_label' => 'Manage Posts'],
+        ['title' => 'Outstations', 'path' => 'outstations', 'route' => 'outstations.index', 'group' => 'Community', 'type' => 'listing', 'listing_type' => 'outstations', 'admin_route' => 'admin.outstations.index', 'admin_label' => 'Manage Outstations'],
         ['title' => 'Outpatient Clinics', 'path' => 'clinical-services/outpatient-clinics', 'route' => 'clinical-services.outpatient', 'group' => 'Clinical Services', 'type' => 'managed'],
         ['title' => 'Partnerships', 'path' => 'about/partnerships', 'route' => 'about.partnerships', 'group' => 'About', 'type' => 'managed'],
         ['title' => 'Patient Guide', 'path' => 'patient-guide', 'route' => 'patient-guide', 'group' => 'Quick Links', 'type' => 'managed'],

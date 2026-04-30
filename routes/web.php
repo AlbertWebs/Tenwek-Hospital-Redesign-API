@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CareersController;
+use App\Http\Controllers\OutstationsController;
 use Illuminate\Support\Facades\Route;
 
 // Home
@@ -84,6 +85,10 @@ Route::get('/training/cardiothoracic-fellowship', fn () => view('training.fellow
 
 // Community
 Route::get('/community', fn () => view('community.index'))->name('community.index');
+
+// Outstations (satellite facilities; managed in admin)
+Route::get('/outstations', [OutstationsController::class, 'index'])->name('outstations.index');
+Route::get('/outstations/{outstation}', [OutstationsController::class, 'show'])->name('outstations.show');
 
 // News
 Route::get('/news', fn () => view('news.index'))->name('news.index');

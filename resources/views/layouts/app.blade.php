@@ -21,9 +21,11 @@
         .nav-mega-panel { min-width: 0; max-width: min(90vw, 800px); }
         .nav-mega-panel.nav-mega-panel--ctc { width: 700px; }
         .nav-mega-panel.nav-mega-panel--services { width: 580px; }
+        .nav-mega-panel.nav-mega-panel--education { width: 420px; }
         .nav-mega-panel .mega-grid { display: grid; gap: 1rem 1.5rem; }
         .nav-mega-panel .mega-grid.cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
         .nav-mega-panel .mega-grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .nav-mega-panel .mega-grid.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         .nav-mega-panel .mega-col { min-width: 0; }
         .nav-mega-panel .mega-col a { display: block; white-space: normal; overflow-wrap: break-word; word-break: break-word; padding: 0.25rem 0; }
     </style>
@@ -58,7 +60,7 @@
                     <a href="{{ route('contact.index') }}#donate" class="hover:text-teal-600">Donate</a>
                     <a href="{{ route('volunteers') }}" class="hover:text-teal-600">Volunteers</a>
                     <a href="{{ route('community.index') }}#spiritual" class="hover:text-teal-600">Spiritual Ministry</a>
-                    <a href="{{ route('contact.index') }}" class="hover:text-teal-600">Contacts</a>
+                    <a href="{{ route('outstations.index') }}" class="hover:text-teal-600">Outstations</a>
                 </div>
             </div>
             {{-- Lower row: main nav centered (desktop); mobile logo left, hamburger right --}}
@@ -137,14 +139,6 @@
                         <div class="nav-mega-panel nav-mega-panel--services absolute left-1/2 -translate-x-1/2 top-full pt-1 opacity-0 invisible transition-all duration-200">
                             <div class="bg-white rounded-lg shadow-lg border border-slate-200 p-4 mega-grid cols-3">
                                 <div class="mega-col">
-                                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Outpatient & Clinics</p>
-                                    <a href="{{ route('clinical-services.outpatient') }}" class="text-sm text-slate-700 hover:text-teal-600">General Outpatient</a>
-                                    <a href="{{ url('/clinical-services/outpatient-clinics/chest') }}" class="text-sm text-slate-700 hover:text-teal-600">Chest Clinic</a>
-                                    <a href="{{ url('/clinical-services/outpatient-clinics/cardiac') }}" class="text-sm text-slate-700 hover:text-teal-600">Cardiac Clinic</a>
-                                    <a href="{{ url('/clinical-services/outpatient-clinics/oncology') }}" class="text-sm text-slate-700 hover:text-teal-600">Oncology Clinic</a>
-                                    <a href="{{ url('/clinical-services/specialized/emergency') }}" class="text-sm text-slate-700 hover:text-teal-600">Casualty / A&E</a>
-                                </div>
-                                <div class="mega-col">
                                     <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Surgical Services</p>
                                     <a href="{{ route('clinical-services.surgical') }}" class="text-sm text-slate-700 hover:text-teal-600">Surgical Services</a>
                                     <a href="{{ url('/clinical-services/surgical-services/ob-gyn') }}" class="text-sm text-slate-700 hover:text-teal-600">OB/GYN Surgeries</a>
@@ -157,22 +151,36 @@
                                     <a href="{{ url('/clinical-services/specialized/dental') }}" class="text-sm text-slate-700 hover:text-teal-600">Dental Services</a>
                                     <a href="{{ url('/clinical-services/specialized/diagnostic') }}" class="text-sm text-slate-700 hover:text-teal-600">Diagnostic Services</a>
                                 </div>
+                                <div class="mega-col">
+                                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Outpatient</p>
+                                    <a href="{{ route('clinical-services.outpatient') }}" class="text-sm text-slate-700 hover:text-teal-600">General Outpatient</a>
+                                    <a href="{{ url('/clinical-services/outpatient-clinics/chest') }}" class="text-sm text-slate-700 hover:text-teal-600">Chest Clinic</a>
+                                    <a href="{{ url('/clinical-services/outpatient-clinics/cardiac') }}" class="text-sm text-slate-700 hover:text-teal-600">Cardiac Clinic</a>
+                                    <a href="{{ url('/clinical-services/outpatient-clinics/oncology') }}" class="text-sm text-slate-700 hover:text-teal-600">Oncology Clinic</a>
+                                    <a href="{{ url('/clinical-services/specialized/emergency') }}" class="text-sm text-slate-700 hover:text-teal-600">Casualty / A&E</a>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    {{-- Training dropdown --}}
-                    <div class="nav-dropdown relative">
+                    {{-- Education mega: Training + Research --}}
+                    <div class="nav-mega relative">
                         <button type="button" class="px-4 py-2 text-sm font-medium text-slate-700 hover:text-teal-600 rounded inline-flex items-center gap-1">
-                            Training & Education <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            Education <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                         </button>
-                        <div class="nav-dropdown-panel absolute left-0 top-full pt-1 w-64 opacity-0 invisible transition-all duration-200">
-                            <div class="bg-white rounded-lg shadow-lg border border-slate-200 py-2">
-                                <a href="{{ route('training.index') }}" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50">Residency Programmes</a>
-                                <a href="{{ route('training.fellowship') }}" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50">Cardiothoracic Fellowship</a>
-                                <div class="border-t border-slate-100 mt-2 pt-2">
-                                    <a href="#" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50">School of Health Sciences <span class="text-slate-400 text-xs">(External)</span></a>
-                                    <a href="#" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50">School of Chaplaincy <span class="text-slate-400 text-xs">(External)</span></a>
+                        <div class="nav-mega-panel nav-mega-panel--education absolute left-1/2 -translate-x-1/2 top-full pt-1 opacity-0 invisible transition-all duration-200">
+                            <div class="bg-white rounded-lg shadow-lg border border-slate-200 p-4 mega-grid cols-2">
+                                <div class="mega-col">
+                                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Training</p>
+                                    <a href="https://tenwekhosp.org/training/" target="_blank" rel="noopener noreferrer" class="text-sm text-slate-700 hover:text-teal-600">Tenwek Hospital Colleges <span class="text-slate-400 text-xs">(External)</span></a>
+                                    <a href="{{ route('careers.index') }}#internships" class="text-sm text-slate-700 hover:text-teal-600">Internship</a>
+                                    <a href="{{ route('training.index') }}" class="text-sm text-slate-700 hover:text-teal-600">Residency</a>
+                                    <a href="{{ route('training.fellowship') }}" class="text-sm text-slate-700 hover:text-teal-600">Fellowship</a>
+                                </div>
+                                <div class="mega-col">
+                                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Research</p>
+                                    <a href="{{ route('research.index') }}" class="text-sm text-slate-700 hover:text-teal-600">Research</a>
+                                    <a href="{{ route('research.ethics') }}" class="text-sm text-slate-700 hover:text-teal-600">Ethics Review Committee</a>
                                 </div>
                             </div>
                         </div>
@@ -197,8 +205,16 @@
                 <a href="{{ route('about.tenwek') }}" class="block py-2 text-slate-700">About</a>
                 <a href="{{ route('ctc.overview') }}" class="block py-2 text-teal-700 font-medium">Cardiothoracic Centre</a>
                 <a href="{{ route('clinical-services.index') }}" class="block py-2 text-slate-700">Clinical Services</a>
-                <a href="{{ route('training.index') }}" class="block py-2 text-slate-700">Training & Education</a>
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider pt-2">Education</p>
+                <a href="https://tenwekhosp.org/training/" target="_blank" rel="noopener noreferrer" class="block py-2 pl-2 text-slate-700">Tenwek Hospital Colleges <span class="text-slate-400 text-xs">↗</span></a>
+                <a href="{{ route('careers.index') }}#internships" class="block py-2 pl-2 text-slate-700">Internship</a>
+                <a href="{{ route('training.index') }}" class="block py-2 pl-2 text-slate-700">Residency</a>
+                <a href="{{ route('training.fellowship') }}" class="block py-2 pl-2 text-slate-700">Fellowship</a>
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider pt-2">Research</p>
+                <a href="{{ route('research.index') }}" class="block py-2 pl-2 text-slate-700">Research</a>
+                <a href="{{ route('research.ethics') }}" class="block py-2 pl-2 text-slate-700">Ethics Review Committee</a>
                 <a href="{{ route('community.index') }}" class="block py-2 text-slate-700">Community & Mission</a>
+                <a href="{{ route('outstations.index') }}" class="block py-2 text-slate-700">Outstations</a>
                 <a href="{{ route('contact.index') }}" class="block py-2 text-slate-700">Contact</a>
                 <a href="{{ route('contact.index') }}#donate" class="block py-2 text-teal-600 font-medium">Donate</a>
                 <a href="{{ route('contact.index') }}#refer" class="block py-2 text-teal-600 font-medium">Refer Patient</a>
@@ -253,34 +269,32 @@
                         <li><a href="{{ url('/clinical-services/surgical-services/neurosurgical') }}" class="hover:text-white">Neurosurgical Services</a></li>
                     </ul>
                 </div>
-                {{-- Training & Education --}}
+                {{-- Education: Training + Research --}}
                 <div>
-                    <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Training &amp; Education</h3>
+                    <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Education</h3>
+                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Training</p>
+                    <ul class="space-y-2 text-sm mb-4">
+                        <li><a href="https://tenwekhosp.org/training/" target="_blank" rel="noopener noreferrer" class="hover:text-white">Tenwek Hospital Colleges <span class="text-slate-500">↗</span></a></li>
+                        <li><a href="{{ route('careers.index') }}#internships" class="hover:text-white">Internship</a></li>
+                        <li><a href="{{ route('training.index') }}" class="hover:text-white">Residency</a></li>
+                        <li><a href="{{ route('training.fellowship') }}" class="hover:text-white">Fellowship</a></li>
+                    </ul>
+                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Research</p>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="{{ route('training.index') }}" class="hover:text-white">Residency Programmes</a></li>
-                        <li><a href="{{ route('training.fellowship') }}" class="hover:text-white">Fellowship Training</a></li>
-                        <li><a href="{{ route('careers.index') }}#internships" class="hover:text-white">Internships</a></li>
-                        <li><a href="https://tenwekhosp.org/training/" target="_blank" rel="noopener noreferrer" class="hover:text-white">College of Health Sciences <span class="text-slate-500">↗</span></a></li>
-                        <li><a href="https://tenwekhosp.org/training/" target="_blank" rel="noopener noreferrer" class="hover:text-white">School of Chaplaincy <span class="text-slate-500">↗</span></a></li>
+                        <li><a href="{{ route('research.index') }}" class="hover:text-white">Research</a></li>
+                        <li><a href="{{ route('research.ethics') }}" class="hover:text-white">Ethics Review Committee</a></li>
                     </ul>
                 </div>
                 {{-- Medical Outreach & Community --}}
                 <div>
                     <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Outreach &amp; Community</h3>
                     <ul class="space-y-2 text-sm">
+                        <li><a href="{{ route('outstations.index') }}" class="hover:text-white">Outstations</a></li>
                         <li><a href="{{ route('community.index') }}" class="hover:text-white">Community Outreach</a></li>
                         <li><a href="{{ route('community.index') }}#satellite" class="hover:text-white">Satellite Health Facilities</a></li>
                         <li><a href="{{ route('community.index') }}#community-health" class="hover:text-white">Community Health &amp; Development</a></li>
                         <li><a href="{{ route('community.index') }}#spiritual" class="hover:text-white">Spiritual Ministry</a></li>
                         <li><a href="{{ route('community.index') }}" class="hover:text-white">Mission Work</a></li>
-                    </ul>
-                </div>
-                {{-- Research --}}
-                <div>
-                    <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Research</h3>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="{{ route('research.index') }}" class="hover:text-white">Research</a></li>
-                        <li><a href="{{ route('research.ethics') }}" class="hover:text-white">Ethics Review Committee</a></li>
                     </ul>
                 </div>
                 {{-- Support & Quick Links --}}
@@ -294,6 +308,7 @@
                         <li><a href="{{ route('careers.index') }}#positions" class="hover:text-white">Open Positions</a></li>
                         <li><a href="{{ route('volunteers') }}" class="hover:text-white">Volunteers</a></li>
                         <li><a href="{{ route('contact.index') }}#donate" class="hover:text-white">Donate</a></li>
+                        <li><a href="{{ route('outstations.index') }}" class="hover:text-white">Outstations</a></li>
                         <li><a href="{{ route('contact.index') }}" class="hover:text-white">Contact</a></li>
                         <li><a href="{{ route('contact.visiting') }}" class="hover:text-white">Visiting Hours</a></li>
                     </ul>

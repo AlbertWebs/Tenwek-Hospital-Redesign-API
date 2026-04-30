@@ -48,6 +48,7 @@ class Page extends Model
         $map = [
             'careers' => 'admin.careers.index',
             'news' => 'admin.posts.index',
+            'outstations' => 'admin.outstations.index',
         ];
         return $map[$this->listing_type ?? ''] ?? null;
     }
@@ -60,6 +61,7 @@ class Page extends Model
         $map = [
             'careers' => 'Manage Jobs',
             'news' => 'Manage Posts',
+            'outstations' => 'Manage Outstations',
         ];
         return $map[$this->listing_type ?? ''] ?? 'Manage Content';
     }

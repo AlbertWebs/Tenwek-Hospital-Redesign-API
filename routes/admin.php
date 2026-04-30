@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\Ctc\ServiceController;
 use App\Http\Controllers\Admin\Ctc\ClinicController;
 use App\Http\Controllers\Admin\Ctc\FacilityController;
 use App\Http\Controllers\Admin\CareerController;
+use App\Http\Controllers\Admin\OutstationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/admin/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -37,6 +38,7 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::post('menus/reorder', [MenuController::class, 'reorder'])->name('menus.reorder');
     Route::get('settings', [SettingsController::class, 'index'])->name('settings.index');
     Route::resource('careers', CareerController::class)->except(['show']);
+    Route::resource('outstations', OutstationController::class)->except(['show']);
     Route::prefix('ctc')->name('ctc.')->group(function () {
         Route::get('services', [ServiceController::class, 'index'])->name('services.index');
         Route::get('clinics', [ClinicController::class, 'index'])->name('clinics.index');

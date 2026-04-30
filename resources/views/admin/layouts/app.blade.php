@@ -91,6 +91,12 @@
                             <span x-show="sidebarOpen" x-cloak>Careers (Jobs)</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('admin.outstations.index') }}" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors {{ request()->routeIs('admin.outstations.*') ? 'border-l-2 border-amber-400 bg-amber-500/20 text-amber-100 -ml-px pl-[11px]' : 'text-slate-300 hover:bg-slate-700/60 hover:text-white' }}">
+                            <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg {{ request()->routeIs('admin.outstations.*') ? 'bg-amber-500 text-white' : 'bg-slate-700/60 text-amber-300' }}"><svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></span>
+                            <span x-show="sidebarOpen" x-cloak>Outstations</span>
+                        </a>
+                    </li>
                 </ul>
 
                 <p x-show="sidebarOpen" x-cloak class="mt-6 flex items-center gap-2 px-3 text-xs font-semibold uppercase tracking-wider text-slate-400"><span class="h-px flex-1 bg-slate-600"></span>CTC<span class="h-px w-6 bg-slate-600"></span></p>

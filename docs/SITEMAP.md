@@ -133,8 +133,8 @@ The public header uses **dropdowns** and **mega menus** to group links. On deskt
 
 ### Desktop: dropdown vs mega menu
 
-- **Dropdown** — Single column panel (e.g. ~14rem wide). Used for About and Training.
-- **Mega menu** — Multi-column panel (wider). Used for Cardiothoracic Centre and Clinical Services so many links fit in one panel.
+- **Dropdown** — Single column panel (e.g. ~14rem wide). Used for About.
+- **Mega menu** — Multi-column panel (wider). Used for Cardiothoracic Centre, Clinical Services, and Education so many links fit in one panel.
 
 ### About (dropdown)
 
@@ -163,21 +163,22 @@ Trigger: **Cardiothoracic Centre** (link + caret). Five columns:
 
 ### Clinical Services (mega menu)
 
-Trigger: **Clinical Services** (link + caret). Three columns:
+Trigger: **Clinical Services** (link + caret). Three columns (left to right): Surgical Services, Specialized, then **Outpatient** in the third column.
 
 | Column | Links |
 |--------|--------|
-| **Outpatient & Clinics** | General Outpatient → `clinical-services.outpatient`, Chest Clinic, Cardiac Clinic, Oncology Clinic (outpatient-clinics slugs), Casualty / A&E (specialized/emergency) |
 | **Surgical Services** | Surgical Services → `clinical-services.surgical`, OB/GYN, Orthopedic, Cardiothoracic Surgeries (surgical-services slugs) |
 | **Specialized** | Eye Services, Dental Services, Diagnostic Services (specialized slugs) |
+| **Outpatient** | General Outpatient → `clinical-services.outpatient`, Chest Clinic, Cardiac Clinic, Oncology Clinic (outpatient-clinics slugs), Casualty / A&E (specialized/emergency) |
 
-### Training & Education (dropdown)
+### Education (mega menu)
 
-Trigger: **Training & Education**. Simple list:
+Trigger: **Education** (button + caret). Two columns: **Training** and **Research**.
 
-- Residency Programmes → `training.index`
-- Cardiothoracic Fellowship → `training.fellowship`
-- *(divider)* School of Health Sciences (External), School of Chaplaincy (External) — placeholder `#` links.
+| Column | Links |
+|--------|--------|
+| **Training** | Tenwek Hospital Colleges (external: `https://tenwekhosp.org/training/`), Internship → `careers.index#internships`, Residency → `training.index`, Fellowship → `training.fellowship` |
+| **Research** | Research → `research.index`, Ethics Review Committee → `research.ethics` |
 
 ### Top-level links (no dropdown)
 
@@ -188,11 +189,11 @@ Trigger: **Training & Education**. Simple list:
 
 ### Mobile menu
 
-Single flat list (no nested dropdowns): Home, About, Cardiothoracic Centre, Clinical Services, Training & Education, Community & Mission, Contact, Donate, Refer Patient. Sub-pages (e.g. About sub-items, CTC/Clinical Services mega items) are not repeated here; users go to the parent page or use footer links.
+Flat list (no flyout): Home, About, Cardiothoracic Centre, Clinical Services, **Education** grouped sub-list (Training + Research links as in the desktop mega), Community & Mission, Contact, Donate, Refer Patient.
 
 ### Footer link groups
 
-The footer repeats many of the same destinations in grouped columns: About, Cardiothoracic Centre, Clinical Services, Training & Education, Outreach & Community, Research, Quick Links, News & Updates. These are not dropdowns but static link blocks.
+The footer repeats many destinations in grouped columns: About, Cardiothoracic Centre, Clinical Services, **Education** (Training + Research subsections in one column), Outreach & Community, Quick Links, News & Updates. These are not dropdowns but static link blocks.
 
 ---
 
