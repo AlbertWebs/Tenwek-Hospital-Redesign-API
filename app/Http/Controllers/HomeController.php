@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Carousel;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\View\View;
@@ -26,13 +27,30 @@ class HomeController extends Controller
             ]);
         }
 
+        $heroType = Setting::get('hero_type', 'video') === 'carousel' ? 'carousel' : 'video';
+
         $slides = Setting::get('hero_carousel_slides', $defaultSlides);
         if (! is_array($slides)) {
             $slides = $defaultSlides;
         }
 
+        if ($heroType === 'carousel' && Schema::hasTable('carousels')) {
+            $managedId = (int) Setting::get('hero_managed_carousel_id', 0);
+            if ($managedId > 0) {
+                $carousel = Carousel::query()
+                    ->with(['slides' => fn ($q) => $q->orderBy('sort_order')->orderBy('id')])
+                    ->find($managedId);
+                if ($carousel && $carousel->slides->isNotEmpty()) {
+                    $slides = $carousel->slides->map(fn ($s) => [
+                        'image' => $s->image_url,
+                        'alt' => (string) ($s->alt_text ?? ''),
+                    ])->all();
+                }
+            }
+        }
+
         return view('home', [
-            'heroType' => Setting::get('hero_type', 'video') === 'carousel' ? 'carousel' : 'video',
+            'heroType' => $heroType,
             'heroVideoEmbedUrl' => Setting::get('hero_video_embed_url', $defaultVideo),
             'heroCarouselSlides' => $slides,
         ]);

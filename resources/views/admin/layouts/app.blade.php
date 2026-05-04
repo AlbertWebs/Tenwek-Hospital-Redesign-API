@@ -80,6 +80,18 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{{ route('admin.carousels.index') }}" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors {{ request()->routeIs('admin.carousels.index', 'admin.carousels.edit') || request()->routeIs('admin.carousels.slides.*') ? 'border-l-2 border-amber-400 bg-amber-500/20 text-amber-100 -ml-px pl-[11px]' : 'text-slate-300 hover:bg-slate-700/60 hover:text-white' }}">
+                            <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg {{ request()->routeIs('admin.carousels.index', 'admin.carousels.edit') || request()->routeIs('admin.carousels.slides.*') ? 'bg-amber-500 text-white' : 'bg-slate-700/60 text-amber-300' }}"><svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg></span>
+                            <span x-show="sidebarOpen" x-cloak>Carousels</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.carousels.create') }}" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors {{ request()->routeIs('admin.carousels.create') ? 'border-l-2 border-amber-400 bg-amber-500/20 text-amber-100 -ml-px pl-[11px]' : 'text-slate-300 hover:bg-slate-700/60 hover:text-white' }}">
+                            <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg {{ request()->routeIs('admin.carousels.create') ? 'bg-amber-500 text-white' : 'bg-slate-700/60 text-amber-300' }}"><svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg></span>
+                            <span x-show="sidebarOpen" x-cloak>Add carousel</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ route('admin.posts.index') }}" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors {{ request()->routeIs('admin.posts.*') ? 'border-l-2 border-amber-400 bg-amber-500/20 text-amber-100 -ml-px pl-[11px]' : 'text-slate-300 hover:bg-slate-700/60 hover:text-white' }}">
                             <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg {{ request()->routeIs('admin.posts.*') ? 'bg-amber-500 text-white' : 'bg-slate-700/60 text-amber-300' }}"><svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16v6m3-3v3m0-3v-3m0 3v-3m0-3v3"/></svg></span>
                             <span x-show="sidebarOpen" x-cloak>News & Posts</span>

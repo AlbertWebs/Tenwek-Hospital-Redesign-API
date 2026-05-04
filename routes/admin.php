@@ -1,17 +1,18 @@
 <?php
 
 use App\Http\Controllers\Admin\Auth\LoginController;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\PageController;
-use App\Http\Controllers\Admin\MediaController;
-use App\Http\Controllers\Admin\PostController;
-use App\Http\Controllers\Admin\MenuController;
-use App\Http\Controllers\Admin\SettingsController;
-use App\Http\Controllers\Admin\Ctc\ServiceController;
+use App\Http\Controllers\Admin\CareerController;
+use App\Http\Controllers\Admin\CarouselController;
 use App\Http\Controllers\Admin\Ctc\ClinicController;
 use App\Http\Controllers\Admin\Ctc\FacilityController;
-use App\Http\Controllers\Admin\CareerController;
+use App\Http\Controllers\Admin\Ctc\ServiceController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\MediaController;
+use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\OutstationController;
+use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\SettingsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/admin/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -29,6 +30,10 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::post('pages/{page}/sections/{section}/move/{direction}', [PageController::class, 'moveSection'])->name('pages.sections.move')->where('direction', 'up|down');
     Route::get('media', [MediaController::class, 'index'])->name('media.index');
     Route::post('media', [MediaController::class, 'store'])->name('media.store');
+    Route::resource('carousels', CarouselController::class)->except(['show']);
+    Route::post('carousels/{carousel}/slides', [CarouselController::class, 'storeSlide'])->name('carousels.slides.store');
+    Route::put('carousels/{carousel}/slides/{slide}', [CarouselController::class, 'updateSlide'])->name('carousels.slides.update');
+    Route::delete('carousels/{carousel}/slides/{slide}', [CarouselController::class, 'destroySlide'])->name('carousels.slides.destroy');
     Route::get('posts', [PostController::class, 'index'])->name('posts.index');
     Route::get('menus', [MenuController::class, 'index'])->name('menus.index');
     Route::post('menus/items', [MenuController::class, 'storeItem'])->name('menus.items.store');
