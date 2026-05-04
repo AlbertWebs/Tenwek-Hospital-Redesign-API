@@ -14,28 +14,33 @@
 <section class="relative overflow-hidden" style="background:#100f57;min-height:92vh;display:flex;align-items:center;">
     <div class="absolute inset-0 overflow-hidden">
         @if(($heroType ?? 'video') === 'video')
-            <iframe class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+            <iframe class="absolute top-1/2 left-1/2 z-0 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
                 style="width:100vw;height:56.25vw;min-height:100%;min-width:177.78vh;"
                 src="{{ $heroVideoEmbedUrl ?? 'https://www.youtube.com/embed/cVFq8mHfWXk?autoplay=1&mute=1&loop=1&playlist=cVFq8mHfWXk&controls=0&showinfo=0&rel=0&playsinline=1' }}"
                 title="Tenwek Hospital hero video"
                 frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         @else
-            <div id="hero-carousel" class="absolute inset-0" role="region" aria-roledescription="carousel" aria-label="Homepage highlights">
+            <div id="hero-carousel" class="absolute inset-0 z-0" role="region" aria-roledescription="carousel" aria-label="Homepage highlights">
                 @forelse($heroCarouselList as $index => $slide)
                     <div class="hero-carousel-slide absolute inset-0 transition-opacity duration-[1100ms] ease-in-out {{ $index === 0 ? 'opacity-100 z-[1]' : 'opacity-0 z-0' }}"
                          data-hero-slide
                          aria-hidden="{{ $index === 0 ? 'false' : 'true' }}">
-                        <img src="{{ $slide['image'] }}" alt="{{ $slide['alt'] ?? 'Hero image' }}" class="absolute inset-0 h-full w-full object-cover" loading="{{ $index === 0 ? 'eager' : 'lazy' }}" width="1920" height="1080">
+                        {{-- Slight darken + contrast so photos read closer to the video hero under the same gradients --}}
+                        <img src="{{ $slide['image'] }}" alt="{{ $slide['alt'] ?? 'Hero image' }}" class="absolute inset-0 h-full w-full object-cover brightness-[0.88] contrast-[1.03] saturate-[0.95]" loading="{{ $index === 0 ? 'eager' : 'lazy' }}" width="1920" height="1080">
                     </div>
                 @empty
                     {{-- No slides configured; keep brand backdrop only --}}
                 @endforelse
             </div>
+            @if(count($heroCarouselList) > 0)
+                {{-- Extra veil so bright photography matches video depth before cinematic gradients --}}
+                <div class="pointer-events-none absolute inset-0 z-[1]" style="background:rgba(16,15,87,.38);" aria-hidden="true"></div>
+            @endif
         @endif
-        {{-- cinematic gradient --}}
-        <div class="absolute inset-0" style="background:linear-gradient(to bottom, rgba(16,15,87,.65) 0%, rgba(16,15,87,.15) 35%, rgba(16,15,87,.25) 55%, rgba(16,15,87,.85) 85%, rgba(16,15,87,.97) 100%);"></div>
+        {{-- cinematic gradient (same stack as video) --}}
+        <div class="pointer-events-none absolute inset-0 z-[2]" style="background:linear-gradient(to bottom, rgba(16,15,87,.65) 0%, rgba(16,15,87,.15) 35%, rgba(16,15,87,.25) 55%, rgba(16,15,87,.85) 85%, rgba(16,15,87,.97) 100%);"></div>
         {{-- left anchor shadow --}}
-        <div class="absolute inset-y-0 left-0 w-3/5" style="background:linear-gradient(to right,rgba(16,15,87,.5),transparent);"></div>
+        <div class="pointer-events-none absolute inset-y-0 left-0 z-[2] w-3/5" style="background:linear-gradient(to right,rgba(16,15,87,.5),transparent);"></div>
     </div>
 
     {{-- Content — vertically centred, left-aligned --}}
