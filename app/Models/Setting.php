@@ -15,6 +15,26 @@ class Setting extends Model
         return $setting ? static::castValue($setting->value, $setting->type) : $default;
     }
 
+    /**
+     * @param  string|array|bool|int|null  $value
+     */
+    public static function put(string $key, $value, string $type = 'string', string $group = 'general'): void
+    {
+        $stored = match ($type) {
+            'json' => json_encode($value),
+            'boolean' => filter_var($value, FILTER_VALIDATE_BOOLEAN) ? '1' : '0',
+            'integer' => (string) (int) $value,
+            default => $value === null ? '' : (string) $value,
+        };
+
+        static::updateOrCreate(
+            ['key' => $key],
+            ['group' => $group, 'value' => $stored, 'type' => $type]
+        );
+
+        Cache::forget("setting.{$key}");
+    }
+
     protected static function castValue(?string $value, string $type)
     {
         return match ($type) {

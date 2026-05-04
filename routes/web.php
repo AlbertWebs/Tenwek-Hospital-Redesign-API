@@ -5,7 +5,7 @@ use App\Http\Controllers\OutstationsController;
 use Illuminate\Support\Facades\Route;
 
 // Home
-Route::get('/', fn () => view('home'))->name('home');
+Route::get('/', \App\Http\Controllers\HomeController::class)->name('home');
 
 // About
 Route::get('/about/tenwek-hospital', fn () => view('about.tenwek'))->name('about.tenwek');

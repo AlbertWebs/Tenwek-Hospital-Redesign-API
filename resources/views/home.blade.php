@@ -3,12 +3,35 @@
 @section('content')
 
 {{-- ================================================================ HERO ================================================================ --}}
+@php
+    $heroCarouselList = array_values(array_filter($heroCarouselSlides ?? [], function ($s) {
+        if (! is_array($s)) {
+            return false;
+        }
+        return trim((string) ($s['image'] ?? '')) !== '';
+    }));
+@endphp
 <section class="relative overflow-hidden" style="background:#100f57;min-height:92vh;display:flex;align-items:center;">
     <div class="absolute inset-0 overflow-hidden">
-        <iframe class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-            style="width:100vw;height:56.25vw;min-height:100%;min-width:177.78vh;"
-            src="https://www.youtube.com/embed/cVFq8mHfWXk?autoplay=1&mute=1&loop=1&playlist=cVFq8mHfWXk&controls=0&showinfo=0&rel=0&playsinline=1"
-            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        @if(($heroType ?? 'video') === 'video')
+            <iframe class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                style="width:100vw;height:56.25vw;min-height:100%;min-width:177.78vh;"
+                src="{{ $heroVideoEmbedUrl ?? 'https://www.youtube.com/embed/cVFq8mHfWXk?autoplay=1&mute=1&loop=1&playlist=cVFq8mHfWXk&controls=0&showinfo=0&rel=0&playsinline=1' }}"
+                title="Tenwek Hospital hero video"
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        @else
+            <div id="hero-carousel" class="absolute inset-0" role="region" aria-roledescription="carousel" aria-label="Homepage highlights">
+                @forelse($heroCarouselList as $index => $slide)
+                    <div class="hero-carousel-slide absolute inset-0 transition-opacity duration-[1100ms] ease-in-out {{ $index === 0 ? 'opacity-100 z-[1]' : 'opacity-0 z-0' }}"
+                         data-hero-slide
+                         aria-hidden="{{ $index === 0 ? 'false' : 'true' }}">
+                        <img src="{{ $slide['image'] }}" alt="{{ $slide['alt'] ?? 'Hero image' }}" class="absolute inset-0 h-full w-full object-cover" loading="{{ $index === 0 ? 'eager' : 'lazy' }}" width="1920" height="1080">
+                    </div>
+                @empty
+                    {{-- No slides configured; keep brand backdrop only --}}
+                @endforelse
+            </div>
+        @endif
         {{-- cinematic gradient --}}
         <div class="absolute inset-0" style="background:linear-gradient(to bottom, rgba(16,15,87,.65) 0%, rgba(16,15,87,.15) 35%, rgba(16,15,87,.25) 55%, rgba(16,15,87,.85) 85%, rgba(16,15,87,.97) 100%);"></div>
         {{-- left anchor shadow --}}
@@ -63,6 +86,28 @@
     </div>
 </section>
 
+@if(($heroType ?? 'video') === 'carousel' && count($heroCarouselList ?? []) > 1)
+    @push('scripts')
+        <script>
+            (function () {
+                var root = document.getElementById('hero-carousel');
+                if (!root) return;
+                var slides = root.querySelectorAll('[data-hero-slide]');
+                if (slides.length < 2) return;
+                var i = 0;
+                setInterval(function () {
+                    slides[i].classList.remove('opacity-100', 'z-[1]');
+                    slides[i].classList.add('opacity-0', 'z-0');
+                    slides[i].setAttribute('aria-hidden', 'true');
+                    i = (i + 1) % slides.length;
+                    slides[i].classList.remove('opacity-0', 'z-0');
+                    slides[i].classList.add('opacity-100', 'z-[1]');
+                    slides[i].setAttribute('aria-hidden', 'false');
+                }, 7000);
+            })();
+        </script>
+    @endpush
+@endif
 
 {{-- ================================================================ QUICK ACTIONS ================================================================ --}}
 <section id="quick-actions" style="background:#f6f3f2;padding-bottom:5rem;">

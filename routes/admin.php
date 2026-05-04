@@ -37,6 +37,7 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::post('menus/items/{item}/duplicate', [MenuController::class, 'duplicateItem'])->name('menus.items.duplicate');
     Route::post('menus/reorder', [MenuController::class, 'reorder'])->name('menus.reorder');
     Route::get('settings', [SettingsController::class, 'index'])->name('settings.index');
+    Route::post('settings', [SettingsController::class, 'update'])->name('settings.update');
     Route::resource('careers', CareerController::class)->except(['show']);
     Route::resource('outstations', OutstationController::class)->except(['show']);
     Route::prefix('ctc')->name('ctc.')->group(function () {
